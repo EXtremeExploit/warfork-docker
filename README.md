@@ -27,6 +27,12 @@ Absolute path to a directory in the container containing custom config and map f
 
 Additional [parameters](https://warforkwiki.com/index.php?title=Console_Commands) to pass to `wf_server.x86_64` (for example, +sv_hostname "Insta Server" +g_instagib "1").
 
+##### `WF_BRANCH`
+
+Default: `public`
+
+Which branch of the dedicated server to use, public for normal dedicated server release, `beta` for warfork beta
+
 ### Populate with Own Configs
 
 The server can be populated with your own config files and maps by copying the files from the custom configs directory located at [`WF_CUSTOM_CONFIGS_DIR`](#wf_custom_configs_dir) to the `basewf` folder at each start of the container. [`WF_CUSTOM_CONFIGS_DIR`](#wf_custom_configs_dir) is a mounted directory from the host system. The custom configs directory must have same folder structure as the `basewf` folder in order to add or overwrite the files at the paths.

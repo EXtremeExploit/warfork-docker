@@ -13,6 +13,7 @@ server_dir="${HOME}/server"
 server_installed_lock_file="${server_dir}/installed.lock"
 wf_dir="${server_dir}/basewf"
 wf_custom_configs_dir="${WF_CUSTOM_CONFIGS_DIR-"/var/wf"}"
+wf_branch="${WF_BRANCH:-"public"}"
 
 install() {
   echo '> Installing server ...'
@@ -22,7 +23,7 @@ install() {
   $steam_dir/steamcmd.sh \
     +force_install_dir $server_dir \
     +login anonymous \
-    +app_update 1136510 validate \
+    +app_update 1136510 -beta $wf_branch validate \
     +quit
 
   set +x
@@ -78,7 +79,7 @@ update() {
     $steam_dir/steamcmd.sh \
       +force_install_dir $server_dir \
       +login anonymous \
-      +app_update 1136510 validate \
+      +app_update 1136510 -beta $wf_branch validate \
       +quit
 
     set +x
@@ -88,7 +89,7 @@ update() {
     $steam_dir/steamcmd.sh \
       +force_install_dir $server_dir \
       +login anonymous \
-      +app_update 1136510 \
+      +app_update 1136510 -beta $wf_branch \
       +quit
 
     set +x
