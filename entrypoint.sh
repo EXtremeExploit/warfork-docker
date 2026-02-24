@@ -13,6 +13,8 @@ server_dir="${HOME}/server"
 server_installed_lock_file="${server_dir}/installed.lock"
 wf_dir="${server_dir}/basewf"
 wf_custom_configs_dir="${WF_CUSTOM_CONFIGS_DIR-"/var/wf"}"
+wf_arguments="$@"
+
 
 install() {
   echo '> Installing server ...'
@@ -62,7 +64,7 @@ start() {
 
   exec ./wf_server.x86_64 \
       $optionalParameters \
-      $WF_PARAMS
+      $WF_PARAMS $wf_arguments
 }
 
 update() {

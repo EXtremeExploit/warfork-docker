@@ -38,6 +38,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd -r -g 999 warfork && useradd -r -m -g warfork -u 999 warfork
 
+
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+COPY entrypointtv.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypointtv.sh
+
 USER warfork
 
 RUN mkdir -p /home/warfork/Steam && \
@@ -52,8 +58,4 @@ RUN wget -qO- https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.ta
 RUN ln -s /home/warfork/Steam/linux64 /home/warfork/.steam/sdk64 && \
     ln -s /home/warfork/Steam/linux32 /home/warfork/.steam/sdk32
 
-COPY entrypoint.sh /usr/local/bin/
-
-COPY entrypointtv.sh /usr/local/bin/
-
-CMD [ "bash", "/usr/local/bin/entrypoint.sh" ]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
